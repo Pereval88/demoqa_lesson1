@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -21,17 +23,21 @@ public class TextBoxTests {
 
     @Test
     void fillFormTest() {
-        String firstName = "Egor";
+        String userName = "Egor";
         String lastName = "Ivanov";
         String userEmail = "ei88@yandex.ru";
+        String userPhone = "8800222353";
 
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
-        $("#firstName").setValue(firstName);
+        $("#firstName").setValue(userName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
         $("#gender-radio-1").doubleClick();
-        $("#userNumber").setValue("1111123321");
+        $("#userNumber").setValue(userPhone);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1988");
@@ -52,8 +58,8 @@ public class TextBoxTests {
 
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-body").shouldHave(text(firstName + " " + lastName), text(userEmail), text("Male"),
-                text("123321"), text("15 October,1988"), text("Reading"), text("1.jpeg"), text("Other address 1"),
+        $(".modal-body").shouldHave(text(userName + " " + lastName), text(userEmail), text("Male"),
+                text(userPhone), text("15 October,1988"), text("English"), text("Reading"), text("1.jpeg"), text("Other address 1"),
                 text("Haryana Karnal"));
 
     }
