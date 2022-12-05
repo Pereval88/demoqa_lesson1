@@ -80,7 +80,7 @@ public class RegistrationPage {
 
     public void setCity(String value) {
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Karnal")).click();
+        $("#stateCity-wrapper").$(byText(value)).click();
     }
 
     public void setButton(String value) {

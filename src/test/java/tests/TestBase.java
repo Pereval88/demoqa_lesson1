@@ -3,11 +3,14 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import pages.RegistrationPage;
+import tests.Data.DataFakerTest;
 
 public class TestBase {
     RegistrationPage
             registrationPage =
             new RegistrationPage();
+    DataFakerTest
+            dataFakerTest = new DataFakerTest();
 
     @BeforeAll
     static void beforeAll() {
